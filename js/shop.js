@@ -31,7 +31,7 @@ window.Shop = {
                         </div>
 
                         <div class="product-option-shop">
-                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="${book.id}" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-book_id="${book.id}" rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>
                         </div>
                     </div>
                 </div>`
@@ -40,10 +40,10 @@ window.Shop = {
     addBookToCart: function (bookId) {
         //userId to be read from memory somehow in the future
         var requestBody = {
-            UserId: 39,
+            userId: 39,
             bookId: bookId
         };
-
+            console.log(requestBody)
         $.ajax({
             url: Shop.API_BASE_URL + "/carts",
             method:"PUT",
@@ -59,6 +59,7 @@ window.Shop = {
                 event.preventDefault();
 
                 let bookId = $(this).data("book_id");
+                console.log(bookId);
                 Shop.addBookToCart(bookId);
             })
         }
