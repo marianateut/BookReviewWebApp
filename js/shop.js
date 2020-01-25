@@ -1,25 +1,25 @@
 window.Shop = {
     API_BASE_URL: "http://localhost:8085",
 
-    getBooks:function () {
+    getBooks: function () {
         $.ajax({
-           // method: "GET" ,
+            // method: "GET" ,
             url: Shop.API_BASE_URL + "/books"
 
-        }).done (function (response) {
+        }).done(function (response) {
             console.log(response)
             Shop.displayBooks(response.content);
         });
     },
 
 
-    displayBooks:function (books) {
+    displayBooks: function (books) {
         var allBooksHtml = "";
         books.forEach(book => allBooksHtml += Shop.getBooksHtml(book));
-        $(".single-product-area .row:first-child") .html(allBooksHtml);
+        $(".single-product-area .row:first-child").html(allBooksHtml);
     },
 
-    getBooksHtml:function (book) {
+    getBooksHtml: function (book) {
         return `<div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div class="product-upper">
@@ -43,10 +43,10 @@ window.Shop = {
             userId: 39,
             bookId: bookId
         };
-            console.log(requestBody)
+        console.log(requestBody)
         $.ajax({
             url: Shop.API_BASE_URL + "/carts",
-            method:"PUT",
+            method: "PUT",
             contentType: "application/json",
             data: JSON.stringify(requestBody)
         }).done(function () {
@@ -54,15 +54,16 @@ window.Shop = {
         }) //asa fac navigatie spre alta pagina
     },
 
-        bindEvents: function () {
-            $(".single-product-area").delegate(".add_to_cart_button", "click", function (event) {
-                event.preventDefault();
+    bindEvents: function () {
+        $(".single-product-area").delegate(".add_to_cart_button", "click", function (event) {
+            event.preventDefault();
 
-                let bookId = $(this).data("book_id");
-                console.log(bookId);
-                Shop.addBookToCart(bookId);
-            })
-        }
+            let bookId = $(this).data("book_id");
+            console.log(bookId);
+            Shop.addBookToCart(bookId);
+        })
+    },
+
 };
 
 Shop.getBooks();
