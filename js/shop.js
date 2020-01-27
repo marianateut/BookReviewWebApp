@@ -23,7 +23,7 @@ window.Shop = {
         return `<div class="col-md-3 col-sm-6">
                     <div class="single-shop-product">
                         <div class="product-upper">
-                            <img src="image/book1.png" alt="">
+                            <img src="image/book2.png" alt="">
                         </div>
                         <h2><a href="">${book.title}</a></h2>
                         <div class="product-carousel-price">
